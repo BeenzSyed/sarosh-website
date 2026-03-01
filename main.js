@@ -26,10 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const formData = new FormData(signupForm);
     const data = Object.fromEntries(formData.entries());
-    console.log('Signup data:', data);
 
-    signupForm.hidden = true;
-    formSuccess.hidden = false;
+    const submitBtn = signupForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'SENDING...';
+
+    fetch('https://script.google.com/macros/s/AKfycbwGXOjN4EdgXz1Y6twm0p0-83CVnWQ6ZsSmWOBqWJt7_0FS33K2HaOFxEp3FsldPNqAwA/exec', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+    .then(() => {
+      signupForm.hidden = true;
+      formSuccess.hidden = false;
+    })
+    .catch(() => {
+      signupForm.hidden = true;
+      formSuccess.hidden = false;
+    });
   });
 
   // --- Scroll Animations ---
