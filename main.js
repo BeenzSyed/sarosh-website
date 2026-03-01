@@ -32,35 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     formSuccess.hidden = false;
   });
 
-  // --- Donate Amount Selector ---
-  const donateAmounts = document.querySelectorAll('.donate-amount');
-  const donateBtn = document.getElementById('donate-btn');
-  let selectedAmount = 50;
-
-  donateAmounts.forEach(btn => {
-    btn.addEventListener('click', () => {
-      donateAmounts.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const amount = btn.dataset.amount;
-      if (amount === 'other') {
-        const custom = prompt('Enter a custom donation amount ($):');
-        if (custom && !isNaN(custom) && Number(custom) > 0) {
-          selectedAmount = Number(custom);
-          donateBtn.textContent = `DONATE $${selectedAmount}`;
-        }
-      } else {
-        selectedAmount = Number(amount);
-        donateBtn.textContent = `DONATE $${selectedAmount}`;
-      }
-    });
-  });
-
-  donateBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert(`Thank you for your interest in donating $${selectedAmount}! Donation processing will be set up soon.`);
-  });
-
   // --- Scroll Animations ---
   const animatedElements = document.querySelectorAll('.priority-item, .chapter');
 
