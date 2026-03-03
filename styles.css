@@ -477,6 +477,18 @@ h1, h2, h3, h4 {
   margin-bottom: 0;
 }
 
+.chapter-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-top: var(--space-sm);
+  color: var(--color-text-mid);
+}
+
+.chapter-list li {
+  margin-bottom: var(--space-sm);
+  line-height: 1.7;
+}
+
 .chapter-divider {
   text-align: center;
   padding: var(--space-xs) 0;
@@ -497,6 +509,14 @@ h1, h2, h3, h4 {
 
 .priorities .title-underline {
   background: var(--color-orange);
+}
+
+.priorities-intro {
+  text-align: center;
+  color: var(--color-white);
+  font-size: 1.15rem;
+  margin-bottom: var(--space-lg);
+  opacity: 0.9;
 }
 
 .priorities-list {
