@@ -13,13 +13,248 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ============================================
+       SAROSH JAFRI FOR HUTTO — Campaign Website
+       Colors from campaign sign: Navy, Red, Orange
+       ============================================ */
+
+    /* --- Design Tokens --- */
+    :root {
+      --color-navy: #1b2a5b;
+      --color-navy-dark: #111d40;
+      --color-red: #cc2233;
+      --color-orange: #d4832c;
+      --color-white: #ffffff;
+      --color-text: #1a1a1a;
+      --color-text-light: #666666;
+
+      --font-heading: 'Oswald', 'Impact', sans-serif;
+      --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+
+      --transition: 0.3s ease;
+    }
+
+    /* --- Reset & Base --- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      line-height: 1.7;
+      font-size: 17px;
+      background: var(--color-white);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--color-orange);
+      text-decoration: none;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      line-height: 1.2;
+      color: var(--color-navy);
+      letter-spacing: 0.02em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* --- Navigation --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--color-white);
+      border-bottom: 3px solid var(--color-red);
+      transition: all var(--transition);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+
+    /* --- Hippo Icon --- */
+    .hippo-icon {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .hippo-nav {
+      width: 34px;
+      height: 32px;
+      margin-right: 0.35rem;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .logo-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--color-navy);
+      letter-spacing: 0.05em;
+    }
+
+    .logo-sep {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--color-text-light);
+    }
+
+    .logo-office {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--color-orange);
+      letter-spacing: 0.05em;
+    }
+
+    /* --- Hero --- */
+    .hero {
+      position: relative;
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-white);
+      padding: 100px 1.5rem 40px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-stars {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 1.2rem;
+      color: var(--color-white);
+      background: var(--color-red);
+      padding: 0.6rem 0;
+      width: 100%;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-stars-top {
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+    }
+
+    .hero-stars-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-navy);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-name {
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero-first {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      color: var(--color-navy);
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .hero-office-band {
+      background: linear-gradient(135deg, rgba(212,131,44,0.15) 0%, var(--color-orange) 40%, var(--color-orange) 60%, rgba(212,131,44,0.15) 100%);
+      padding: 0.6rem 2rem;
+      margin: 0 auto var(--space-md);
+      max-width: 500px;
+    }
+
+    .hero-office {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--color-white);
+      letter-spacing: 0.12em;
+      margin: 0;
+    }
+
+    /* --- Footer --- */
+    .footer {
+      background: var(--color-navy-dark);
+      color: rgba(255,255,255,0.7);
+      padding: var(--space-lg) 0 var(--space-md);
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* --- Responsive --- */
+
+    @media (max-width: 768px) {
+      .hero-stars {
+        gap: 0.8rem;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="#" class="nav-logo">
+      <a href="/" class="nav-logo">
         <svg class="hippo-icon hippo-nav" viewBox="0 0 160 150" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Body -->
           <ellipse cx="78" cy="88" rx="58" ry="44" fill="#5a4350" stroke="#222" stroke-width="4"/>
@@ -59,7 +294,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <header class="hero" id="hero">
     <div class="hero-stars hero-stars-top">
       <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
@@ -86,6 +321,15 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        navbar.style.boxShadow = window.scrollY > 50
+          ? '0 2px 12px rgba(0,0,0,0.1)'
+          : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
